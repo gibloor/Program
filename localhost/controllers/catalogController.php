@@ -1,30 +1,27 @@
-<?php
+<?
+class catalogController extends Controller
+{
+    private $pageTpl = '/views/catalog.tpl.php';
 
-class catalogController extends Controller {
-
-	private $pageTpl = '/views/catalog.tpl.php';
-
-
-	public function __construct() {
+    public function __construct() {
 		$this->model = new catalogModel();
 		$this->view = new View();
-  //  require_once MODEL_PATH. 'searchModel.php';
-	}
+    }
 
-	public function index() {
-		  global  $results;
-		$results = $this->model->checkCatalog();
-		$this->pageData['results'] = $results;
+    public function index() {
+        $results = $this->model->getCatalog();
+        if(isset($_POST['search'])) {
+            $results=$this->model->searchBooks();
+			  }
 
-			if(isset($_POST['search'])) {
-					$results=$this->model->searchCatalog();
-					$this->pageData['results'] = $results;
-			}
-			if(isset($_POST['nameBook'])) {
-					$this->model->orderBook();
+        if(isset($_POST['nameBook'])) {
+            $user = $this->model->getLoginId('root');
+            $book = $this->model->getBookId($_POST['nameBook']);
+            $this->model->addOrderBook();
+			  }
 
-			}
-		$this->pageData['title'] = "Каталог";
-		$this->view->render($this->pageTpl, $this->pageData);
-	}
+        $this->pageData['results'] = $results;
+        $this->pageData['title'] = "Каталог";
+        $this->view->render($this->pageTpl, $this->pageData);
+    }
 }
