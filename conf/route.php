@@ -13,10 +13,10 @@ class Routing {
                     $controllerName = ucfirst($route[$i]) . "Controller";
                     $modelName =  ucfirst($route[$i]) . "Model";
                     break;
-                    } else {
+                } else {
                         $action = $route[$i];
-                    }
                 }
+            }
             $i--;
         }
 

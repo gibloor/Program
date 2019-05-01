@@ -8,7 +8,7 @@ class catalogModel extends Model
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        foreach($result as $key=>$value){
+        foreach($result as $key => $value){
             $user= $value;
         }
         return $user;
@@ -21,7 +21,7 @@ class catalogModel extends Model
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        foreach($result as $key=>$value){
+        foreach($result as $key => $value){
             $book= $value;
         }
         return $book;
