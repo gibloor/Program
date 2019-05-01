@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title><?php echo $pageData['title']; ?></title>
 </head>
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/catalogStyle.css">
 <body>
     <form method="post">
         <input type="search" name="search" placeholder="Поиск">
@@ -24,6 +24,6 @@
     }
     echo "</table>";
 ?>
-    <a href="Order"> <input type="submit" name="" value="выдача книг"> </a>
+    <a href="adminMenu"> <input type="submit" name="" value="выдача книг"> </a>
 </body>
 </html>

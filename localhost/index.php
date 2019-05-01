@@ -1,2 +1,2 @@
 <?
-require_once("conf/config.php");
+require_once("configs/config.php");

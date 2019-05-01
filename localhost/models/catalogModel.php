@@ -1,31 +1,34 @@
 <?
 class catalogModel extends Model
 {
-    public function getLoginId($login){
+    public function getLoginId($login)
+    {
         $sql = "SELECT id FROM users WHERE login ='$login'";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        foreach($result as $key=>$value){
+        foreach($result as $key => $value){
             $user= $value;
         }
         return $user;
     }
 
-    public function getBookId($book){
+    public function getBookId($book)
+    {
         $sql = "SELECT id FROM books WHERE name = '$book'";
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        foreach($result as $key=>$value){
+        foreach($result as $key => $value){
             $book= $value;
         }
         return $book;
     }
 
-    public function searchBooks() {
+    public function searchBooks()
+    {
         $search = $_POST['search'];
         $result = array();
     		$sql = "SELECT * FROM books WHERE name = '$search' OR writer = '$search' OR genre = '$search'";
@@ -37,7 +40,8 @@ class catalogModel extends Model
         return $result;
     }
 
-    public function getCatalog() {
+    public function getCatalog()
+    {
         $result = array();
         $sql = "SELECT * FROM books";
         $stmt = $this->db->prepare($sql);
@@ -48,7 +52,8 @@ class catalogModel extends Model
         return $result;
   }
 
-    public function addOrderBook(){
+    public function addOrderBook()
+    {
         $receiv = 'Заказал';
         date_default_timezone_set('Europe/Moscow');
         $date = date('m/d/Y h:i:s a', time());
